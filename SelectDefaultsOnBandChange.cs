@@ -1,4 +1,4 @@
-﻿//INCLUDE_ASSEMBLY System.dll
+//INCLUDE_ASSEMBLY System.dll
 //INCLUDE_ASSEMBLY System.Windows.Forms.dll
 
 // Simple "Hello World" for K3. Completely based on the sample scripts in https://dxlog.net/sw/#files%2Fcustomization%2Fscripts
@@ -29,7 +29,7 @@ namespace DXLog.net
 
         public void Deinitialize()
         {
-            data.ActiveRadioBandChanged -= HandleActiveRadioBandChanged;
+            cdata.ActiveRadioBandChanged -= HandleActiveRadioBandChanged;
         } // End of Deinitialize
         
         public void Main(FrmMain main, ContestData cdata, COMMain comMain)
@@ -58,32 +58,32 @@ namespace DXLog.net
                 if (radiomodel.Contains("Elecraft K3/K3S"))
                 {
                     // DV1 	- Diversity ON
-		    radioObject.SendCustomCommand("DV1");
-		    frmMain.SetMainStatusText(String.Format("Diversity On", radioNumber));
-		    Thread.Sleep(1000);
+                    radioObject.SendCustomCommand("DV1;");
+                    frmMain.SetMainStatusText(String.Format("Diversity On", radioNumber));
+                    Thread.Sleep(1000);
 
-		    // AR1 	- RX Antenna ON
-		    radioObject.SendCustomCommand("AR1");
+                    // AR1 	- RX Antenna ON
+                    radioObject.SendCustomCommand("AR1;");
                     frmMain.SetMainStatusText(String.Format("Receive Antenna On", radioNumber));
                     Thread.Sleep(1000);
 
-		    // RC  	- Rit Clear
-		    radioObject.SendCustomCommand("RC");
+                    // RC  	- Rit Clear
+                    radioObject.SendCustomCommand("RC;");
                     frmMain.SetMainStatusText(String.Format("RIT Clear", radioNumber));
                     Thread.Sleep(1000);
 
-		    // RG250	- Main RF Gain Maximum 
-		    radioObject.SendCustomCommand("RG250");
+                    // RG250	- Main RF Gain Maximum 
+                    radioObject.SendCustomCommand("RG250;");
                     frmMain.SetMainStatusText(String.Format("Main RF Gain Maximum", radioNumber));
                     Thread.Sleep(1000);
 
-		    // RG$250	- Sub RF Gain Maximum
-		    radioObject.SendCustomCommand("RG$250");
+                    // RG$250	- Sub RF Gain Maximum
+                    radioObject.SendCustomCommand("RG$250;");
                     frmMain.SetMainStatusText(String.Format("Sub RF Gain Maximum", radioNumber));
                     Thread.Sleep(1000);
 
-		    // SWH25	- Press and Hold RX Ant
-		    radioObject.SendCustomCommand("SWH25");
+                    // SWH25	- Press and Hold RX Ant
+                    radioObject.SendCustomCommand("SWH25;");
                     frmMain.SetMainStatusText(String.Format("Sub Toggle Aux", radioNumber));
                     Thread.Sleep(1000);
 
