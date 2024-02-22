@@ -60,32 +60,32 @@ namespace DXLog.net
                     // DV1 	- Diversity ON
 		    radioObject.SendCustomCommand("DV1");
 		    frmMain.SetMainStatusText(String.Format("Diversity On", radioNumber));
-		    Thread.sleep(1000);
+		    Thread.Sleep(1000);
 
 		    // AR1 	- RX Antenna ON
 		    radioObject.SendCustomCommand("AR1");
                     frmMain.SetMainStatusText(String.Format("Receive Antenna On", radioNumber));
-                    Thread.sleep(1000);
+                    Thread.Sleep(1000);
 
 		    // RC  	- Rit Clear
 		    radioObject.SendCustomCommand("RC");
                     frmMain.SetMainStatusText(String.Format("RIT Clear", radioNumber));
-                    Thread.sleep(1000);
+                    Thread.Sleep(1000);
 
 		    // RG250	- Main RF Gain Maximum 
 		    radioObject.SendCustomCommand("RG250");
                     frmMain.SetMainStatusText(String.Format("Main RF Gain Maximum", radioNumber));
-                    Thread.sleep(1000);
+                    Thread.Sleep(1000);
 
 		    // RG$250	- Sub RF Gain Maximum
 		    radioObject.SendCustomCommand("RG$250");
                     frmMain.SetMainStatusText(String.Format("Sub RF Gain Maximum", radioNumber));
-                    Thread.sleep(1000);
+                    Thread.Sleep(1000);
 
 		    // SWH25	- Press and Hold RX Ant
 		    radioObject.SendCustomCommand("SWH25");
                     frmMain.SetMainStatusText(String.Format("Sub Toggle Aux", radioNumber));
-                    Thread.sleep(1000);
+                    Thread.Sleep(1000);
 
                     //cmd = "DV1;AR1;RC;RG250;RG$250;SWH25";
                     //frmMain.SetMainStatusText(String.Format("Reset", radioNumber));
