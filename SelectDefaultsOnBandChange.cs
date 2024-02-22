@@ -56,9 +56,14 @@ namespace DXLog.net
             	
                 if (radiomodel.Contains("Elecraft K3/K3S"))
                 {
-                    // Diversity ON
-                    cmd = "DV1;";
-                    frmMain.SetMainStatusText(String.Format("Diversity ON", radioNumber));
+                    // DV1 	- Diversity ON
+		    // AR1 	- RX Antenna ON
+		    // RC  	- Rit Clear
+		    // RG250	- Main RF Gain Maximum 
+		    // RG$250	- Sub RF Gain Maximum
+		    // SWH25	- Press and Hold RX Ant
+                    cmd = "DV1;AR1;RC;RG250;RG$250;SWH25";
+                    frmMain.SetMainStatusText(String.Format("Reset", radioNumber));
                 }	
             }
             
