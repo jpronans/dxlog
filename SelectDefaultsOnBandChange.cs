@@ -6,6 +6,7 @@
 
 using System;
 using System.Windows.Forms;
+using System.Threading;
 //using IOComm;
 
 namespace DXLog.net
@@ -57,24 +58,48 @@ namespace DXLog.net
                 if (radiomodel.Contains("Elecraft K3/K3S"))
                 {
                     // DV1 	- Diversity ON
+		    radioObject.SendCustomCommand("DV1");
+		    frmMain.SetMainStatusText(String.Format("Diversity On", radioNumber));
+		    Thread.sleep(1000);
+
 		    // AR1 	- RX Antenna ON
+		    radioObject.SendCustomCommand("AR1");
+                    frmMain.SetMainStatusText(String.Format("Receive Antenna On", radioNumber));
+                    Thread.sleep(1000);
+
 		    // RC  	- Rit Clear
+		    radioObject.SendCustomCommand("RC");
+                    frmMain.SetMainStatusText(String.Format("RIT Clear", radioNumber));
+                    Thread.sleep(1000);
+
 		    // RG250	- Main RF Gain Maximum 
+		    radioObject.SendCustomCommand("RG250");
+                    frmMain.SetMainStatusText(String.Format("Main RF Gain Maximum", radioNumber));
+                    Thread.sleep(1000);
+
 		    // RG$250	- Sub RF Gain Maximum
+		    radioObject.SendCustomCommand("RG$250");
+                    frmMain.SetMainStatusText(String.Format("Sub RF Gain Maximum", radioNumber));
+                    Thread.sleep(1000);
+
 		    // SWH25	- Press and Hold RX Ant
-                    cmd = "DV1;AR1;RC;RG250;RG$250;SWH25";
-                    frmMain.SetMainStatusText(String.Format("Reset", radioNumber));
+		    radioObject.SendCustomCommand("SWH25");
+                    frmMain.SetMainStatusText(String.Format("Sub Toggle Aux", radioNumber));
+                    Thread.sleep(1000);
+
+                    //cmd = "DV1;AR1;RC;RG250;RG$250;SWH25";
+                    //frmMain.SetMainStatusText(String.Format("Reset", radioNumber));
                 }	
             }
             
             // send CAT commands (if any) and update status message
-            if (String.IsNullOrEmpty(cmd))
-            {
-                frmMain.SetMainStatusText(String.Format("ERROR: Band change radio {0} ({1}), no action specified", radioNumber, radioObject.ToString()));
-            } else {
-                radioObject.SendCustomCommand(cmd);
-                frmMain.SetMainStatusText(String.Format("Band change radio {0} ({1}), Reset!", radioNumber, radioObject.ToString()));
-            }
+            //if (String.IsNullOrEmpty(cmd))
+            //{
+            //    frmMain.SetMainStatusText(String.Format("ERROR: Band change radio {0} ({1}), no action specified", radioNumber, radioObject.ToString()));
+            //} else {
+            //    radioObject.SendCustomCommand(cmd);
+            //    frmMain.SetMainStatusText(String.Format("Band change radio {0} ({1}), Reset!", radioNumber, radioObject.ToString()));
+            //}
         }
     }
 }
