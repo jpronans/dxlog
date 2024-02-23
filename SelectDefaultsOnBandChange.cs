@@ -59,32 +59,32 @@ namespace DXLog.net
                 {
                     // DV1 	- Diversity ON
                     radioObject.SendCustomCommand("DV1;");
-                    frmMain.SetMainStatusText(String.Format("Diversity On", radioNumber));
+                    frmMain.SetMainStatusText(String.Format("Diversity On - radio {0}!", radioNumber));
                     Thread.Sleep(1000);
 
                     // AR1 	- RX Antenna ON
                     radioObject.SendCustomCommand("AR1;");
-                    frmMain.SetMainStatusText(String.Format("Receive Antenna On", radioNumber));
+                    frmMain.SetMainStatusText(String.Format("Receive Antenna On - radio {0}!", radioNumber));
                     Thread.Sleep(1000);
 
                     // RC  	- Rit Clear
                     radioObject.SendCustomCommand("RC;");
-                    frmMain.SetMainStatusText(String.Format("RIT Clear", radioNumber));
+                    frmMain.SetMainStatusText(String.Format("RIT Clear - radio {0}!", radioNumber));
                     Thread.Sleep(1000);
 
                     // RG250	- Main RF Gain Maximum 
                     radioObject.SendCustomCommand("RG250;");
-                    frmMain.SetMainStatusText(String.Format("Main RF Gain Maximum", radioNumber));
+                    frmMain.SetMainStatusText(String.Format("Main RF Gain Maximum - radio {0}!", radioNumber));
                     Thread.Sleep(1000);
 
                     // RG$250	- Sub RF Gain Maximum
                     radioObject.SendCustomCommand("RG$250;");
-                    frmMain.SetMainStatusText(String.Format("Sub RF Gain Maximum", radioNumber));
+                    frmMain.SetMainStatusText(String.Format("Sub RF Gain Maximum - radio {0}!", radioNumber));
                     Thread.Sleep(1000);
 
                     // SWH25	- Press and Hold RX Ant
                     radioObject.SendCustomCommand("SWH25;");
-                    frmMain.SetMainStatusText(String.Format("Sub Toggle Aux", radioNumber));
+                    frmMain.SetMainStatusText(String.Format("Sub Toggle Aux - radio {0}!", radioNumber));
                     Thread.Sleep(1000);
 
                     //cmd = "DV1;AR1;RC;RG250;RG$250;SWH25";
