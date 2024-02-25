@@ -35,9 +35,24 @@ namespace DXLog.net
         public void Main(FrmMain main, ContestData cdata, COMMain comMain)
         {
             String contestName = cdata.activeContest.cdata.ContestName;
-            main.SetMainStatusText(String.Format("Info -> Mapped Function Key Pressed"));
-            //main.SetMainStatusText(String.Format("Info -> Selected Contest name is {0}!", contestName));
+            //main.SetMainStatusText(String.Format("Info -> Mapped Function Key Pressed"));
+            
+            // This will do until the IC command is figured out, just toggle Sub Aux on keypress
+            int radioNumber = cdata.FocusedRadio;
+            // get the radio object, if possible
+            CATCommon radioObject = frmMain.COMMainProvider.RadioObject(radioNumber);
+            if (radioObject == null)
+            {
+                main.SetMainStatusText(String.Format("CAT object for radio {0} isn't available!", radioNumber));
+                return;
+            }
+
+            // SWH25    - Press and Hold RX Ant
+            radioObject.SendCustomCommand("SWH25;");
+            frmMain.SetMainStatusText(String.Format("Sub Toggle Aux - radio {0}!", radioNumber));
+            Thread.Sleep(100);
         }
+        // Need to check how radioNumber gets set automagically
         public void HandleActiveRadioBandChanged(int radioNumber)
         {
             // get the radio object, if possible
@@ -83,9 +98,9 @@ namespace DXLog.net
                     Thread.Sleep(1000);
 
                     // SWH25	- Press and Hold RX Ant
-                    radioObject.SendCustomCommand("SWH25;");
-                    frmMain.SetMainStatusText(String.Format("Sub Toggle Aux - radio {0}!", radioNumber));
-                    Thread.Sleep(1000);
+                    //radioObject.SendCustomCommand("SWH25;");
+                    //frmMain.SetMainStatusText(String.Format("Sub Toggle Aux - radio {0}!", radioNumber));
+                    //Thread.Sleep(1000);
 
                     //cmd = "DV1;AR1;RC;RG250;RG$250;SWH25";
                     //frmMain.SetMainStatusText(String.Format("Reset", radioNumber));
